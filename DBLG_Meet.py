@@ -186,7 +186,7 @@ def accuracyPre(predictions, labels):
     计算预测位置与真实标签之间欧几里得距离的平均值（平均定位误差），并将其转换为米。
     """
     errors = np.sqrt(np.sum((predictions - labels) ** 2, axis=1))
-    return np.mean(errors) * 50 / 100
+    return np.mean(errors) * 60 / 100
 
 
 def accuracyStd(predictions, testLabel):
@@ -194,7 +194,7 @@ def accuracyStd(predictions, testLabel):
     计算预测位置与真实标签之间欧几里得距离的标准差，并将其转换为米。
     """
     error = np.asarray(predictions - testLabel)
-    sample = np.sqrt(error[:, 0] ** 2 + error[:, 1] ** 2) * 50 / 100
+    sample = np.sqrt(error[:, 0] ** 2 + error[:, 1] ** 2) * 60 / 100
     return np.std(sample)
 
 
@@ -203,7 +203,7 @@ def saveTestErrorMat(predictions, testLabel, fileName):
     将测试误差（欧几里得距离，单位：米）保存到MATLAB .mat 文件中。
     """
     error = np.asarray(predictions - testLabel)
-    sample = np.sqrt(error[:, 0] ** 2 + error[:, 1] ** 2) * 50 / 100
+    sample = np.sqrt(error[:, 0] ** 2 + error[:, 1] ** 2) * 60 / 100
     savemat(fileName + '.mat', {'array': sample})
 
 def adjusted_generate(raw_data, generated_data):
